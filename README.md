@@ -1,4 +1,4 @@
-# Recipe book
+# Cookbook
 
 Create recipes from templates and export them to pdf.
 
