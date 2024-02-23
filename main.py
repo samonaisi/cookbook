@@ -28,15 +28,22 @@ def save_pdf(file_content):
     except Exception as error:
         print(f'Error saving file to disc. Error: {error}')
         raise error
+    
+
+def get_pages():
+    with open("data/pages.json") as file:
+        return json.load(file)["pages"]
         
         
 if __name__ == '__main__':
-    template_vars = {
-       'template_title': 'A template example',
-       'template_description': 'Lorem ipsum dolor sit amet, consectetur adipisicing elit'
-    }
+    pages = []
+    for page_number, page_data in enumerate(get_pages()):
+        page_data = {
+            "page_number": page_number,
+            **page_data
+        }
+        template = page_data["type"]
+        pages.append(get_page_from_template(f"{template}.html", page_data))
     pdf_options = {}
-    page_1 = get_page_from_template("file.html", template_vars)
-    page_2 = get_page_from_template("file.html", template_vars)
-    pdf_data = get_pdf_data([page_1, page_2], pdf_options, [])
+    pdf_data = get_pdf_data(pages, pdf_options, ["css/recipes.css"])
     save_pdf(pdf_data)

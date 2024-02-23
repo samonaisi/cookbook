@@ -1,0 +1,30 @@
+<body>
+    <div class="header">
+        <h1>{{ name }}</h1>
+        <h1>{{ arabicName }}</h1>
+    </div>
+    <div class="description">
+        <p>{{ description }}</p>
+    </div>
+    <div class="content">
+        <div class="ingredients">
+            <h2>Ingredients</h2>
+            <ul>
+                {% for ingredient in ingredients %}
+                    <li>{{ ingredient }}</li>
+                {% endfor %}
+            </ul>
+        </div>
+        <div class="instructions">
+            <h2>Instructions</h2>
+            <ol>
+                {% for instruction in instructions %}
+                    <li>{{ instruction }}</li>
+                {% endfor %}
+            </ol>
+        </div>
+    </div>
+    <div class="footer">
+        <p>{{ page_number }}</p>
+    </div>
+</body>

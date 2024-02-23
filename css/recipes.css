@@ -1,0 +1,23 @@
+.header {
+    display: -webkit-box; /* wkhtmltopdf uses this one */
+    display: flex;
+    -webkit-box-pack: justify; /* wkhtmltopdf uses this one */
+    justify-content: justify;
+    width: 100%;
+    font-family: Righteous;
+    font-size: 32px;
+    color: rgb(173, 138, 9);
+}
+
+.content {
+    display: flex;
+    flex-direction: row;
+}
+
+.ingredients {
+    margin-right: 20px;
+}
+
+.footer {
+    page-break-after: always;
+}
