@@ -61,11 +61,14 @@ if __name__ == '__main__':
     recipes_by_category = Recipe.get_by_categories()
     recipes_by_ingredient = Recipe.get_by_ingredients()
     pages = []
+    page_number = 1
     for c in recipes_by_category:
         category: Category = c["category"]
         recipes: List[Recipe] = c["recipes"]
-        pages.append(category.get_html())
+        pages.append(category.get_html(page_number))
+        page_number += 1
         for recipe in recipes:
-            pages.append(recipe.get_html())
+            pages.append(recipe.get_html(page_number))
+            page_number += 1
     CookBook.create_pdf(pages, {"page-size": "A4"}, ["css/recipes.css"])
     

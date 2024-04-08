@@ -1,4 +1,5 @@
 from dataclasses import dataclass
+from typing import Optional
 from jinja2 import Environment, FileSystemLoader
 
 
@@ -48,10 +49,13 @@ class HasTemplate:
     def format_for_template(self) -> dict:
         raise NotImplementedError
 
-    def get_html(self) -> str:
+    def get_html(self, page_number: Optional[int] = None) -> str:
         env = Environment(loader=FileSystemLoader(searchpath="templates"))
         template = env.get_template(self.template)
-        return template.render(self.format_for_template())
+        template_vars = self.format_for_template()
+        if page_number:
+            template_vars["page_number"] = page_number
+        return template.render(template_vars)
 
 
 @dataclass
