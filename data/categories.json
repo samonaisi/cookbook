@@ -1,0 +1,14 @@
+{
+    "categories": [
+        {
+            "order": 1,
+            "name": "category1",
+            "arabic_name": "category1"
+        },
+        {
+            "order": 2,
+            "name": "category2",
+            "arabic_name": "category2"
+        }
+    ]
+}

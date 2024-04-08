@@ -1,49 +1,71 @@
-import os
 import json
+from typing import List
 
 from jinja2 import Environment, FileSystemLoader
 from pdfkit import from_string
 
-
-def get_page_from_template(template_name, template_variables, template_folder="templates"):
-    env = Environment(loader=FileSystemLoader(searchpath=template_folder))
-    template = env.get_template(template_name)
-    return template.render(template_variables)
+from classes import Category, Recipe, Ingredient, IngredientQuantity
 
 
-def get_pdf_data(pages, pdf_options, css_list):
-    return from_string(
-        ''.join(pages),
-        False,
-        options=pdf_options,
-        css=css_list # its a list e.g ['my_css.css', 'my_other_css.css']
-    )
+class CookBook:
+    head_template = "head.html"
 
+    @classmethod
+    def get_head(cls) -> str:
+        env = Environment(loader=FileSystemLoader(searchpath="templates"))
+        template = env.get_template(cls.head_template)
+        return template.render()
 
-def save_pdf(file_content):
-    try:
-        with open('output/output.pdf', 'wb+') as file:
-            file.write(file_content)
+    @classmethod
+    def get_pdf_data(cls, pages, pdf_options, css_list):
+        pages = [cls.get_head(), *pages]
+        return from_string(
+            ''.join(pages),
+            False,
+            options=pdf_options,
+            css=css_list # its a list e.g ['my_css.css', 'my_other_css.css']
+        )
 
-    except Exception as error:
-        print(f'Error saving file to disc. Error: {error}')
-        raise error
-    
-
-def get_pages():
-    with open("data/pages.json") as file:
-        return json.load(file)["pages"]
+    @classmethod
+    def save_pdf(cls, file_content):
+        try:
+            with open('output/output.pdf', 'wb+') as file:
+                file.write(file_content)
+        except Exception as error:
+            print(f'Error saving pdf file : {error}')
+            raise error
         
+    @classmethod
+    def create_pdf(cls, pages: list[str], pdf_options: dict, css_list: list[str]):
+        """
+        Create a pdf file from a list of pages
+        
+        Args:
+            pages: list of pages to be included in the pdf
+            pdf_options: dictionary of pdf options
+            css_list: list of css files to be included in the pdf
+        """
+        pdf_data = cls.get_pdf_data(pages, pdf_options, css_list)
+        cls.save_pdf(pdf_data)
+
         
 if __name__ == '__main__':
+    with open("data/categories.json") as file:
+        categories = json.load(file)["categories"]
+        Category.batch_create(categories)
+
+    with open("data/recipes.json") as file:
+        recipes = json.load(file)["recipes"]
+        Recipe.batch_create(recipes)
+
+    recipes_by_category = Recipe.get_by_categories()
+    recipes_by_ingredient = Recipe.get_by_ingredients()
     pages = []
-    for page_number, page_data in enumerate(get_pages()):
-        page_data = {
-            "page_number": page_number,
-            **page_data
-        }
-        template = page_data["type"]
-        pages.append(get_page_from_template(f"{template}.html", page_data))
-    pdf_options = {}
-    pdf_data = get_pdf_data(pages, pdf_options, ["css/recipes.css"])
-    save_pdf(pdf_data)
+    for c in recipes_by_category:
+        category: Category = c["category"]
+        recipes: List[Recipe] = c["recipes"]
+        pages.append(category.get_html())
+        for recipe in recipes:
+            pages.append(recipe.get_html())
+    CookBook.create_pdf(pages, {"page-size": "A4"}, ["css/recipes.css"])
+    
