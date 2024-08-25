@@ -2,13 +2,28 @@
     "categories": [
         {
             "order": 1,
-            "name": "category1",
-            "arabic_name": "category1"
+            "name": "Produits de base",
+            "arabic_name": "منتجات أساسية"
         },
         {
             "order": 2,
-            "name": "category2",
-            "arabic_name": "category2"
+            "name": "Mezzes",
+            "arabic_name": "مقبلات"
+        },
+        {
+            "order": 3,
+            "name": "Grillades et sandwiches",
+            "arabic_name": "مشاوي و سندويشات"
+        },
+        {
+            "order": 4,
+            "name": "Plats",
+            "arabic_name": "أطباق"
+        },
+        {
+            "order": 5,
+            "name": "Desserts",
+            "arabic_name": "حلويات"
         }
     ]
 }

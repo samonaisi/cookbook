@@ -48,6 +48,27 @@ class CookBook:
         pdf_data = cls.get_pdf_data(pages, pdf_options, css_list)
         cls.save_pdf(pdf_data)
 
+    @classmethod
+    def create_pdf_with_retry(cls, pages: list[str], pdf_options: dict, css_list: list[str], retries: int = 15):
+        """
+        Create a pdf file from a list of pages with retries
+        
+        Args:
+            pages: list of pages to be included in the pdf
+            pdf_options: dictionary of pdf options
+            css_list: list of css files to be included in the pdf
+            retries: number of retries
+        """
+        for i in range(retries):
+            try:
+                cls.create_pdf(pages, pdf_options, css_list)
+                print("PDF created successfully")
+                break
+            except Exception as error:
+                if i == retries - 1:
+                    raise error
+                print(f"Retrying: {i + 1}/{retries}")
+
         
 if __name__ == '__main__':
     with open("data/categories.json") as file:
@@ -70,5 +91,14 @@ if __name__ == '__main__':
         for recipe in recipes:
             pages.append(recipe.get_html(page_number))
             page_number += 1
-    CookBook.create_pdf(pages, {"page-size": "A4"}, ["css/recipes.css"])
+    CookBook.create_pdf_with_retry(
+        pages,
+        {
+            "page-size": "A4",
+            "enable-local-file-access": None,
+            "no-stop-slow-scripts": None,
+            "javascript-delay": 1000,
+        },
+        ["css/recipes.css"],
+    )
     

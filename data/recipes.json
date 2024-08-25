@@ -2,80 +2,10 @@
     "recipes": [
         {
             "order": 1,
-            "category": "category1",
+            "category": "Plats",
             "name": "Maqlouba",
             "arabic_name": "مقلوبة",
-            "image_path": "/assets/maqlouba.jpg",
-            "description": "Maqlouba is a traditional Palestinian dish made of rice, vegetables, and meat. The dish is known for its unique presentation, where the pot is flipped upside down when served, hence the name maqlouba, which means upside down in Arabic.",
-            "servings": 6,
-            "ingredients": [
-                {"quantity": "1 poulet entier", "name": "Poulet"},
-                {"quantity": "1 baton de cannelle", "name": "Cannelle"},
-                {"quantity": "3 feuilles de Laurier", "name": "Laurier"},
-                {"quantity": "1 oignon", "name": "oignon"},
-                {"quantity": "2 aubergines", "name": "Aubergine"},
-                {"quantity": "4 grosses patates", "name": "Patate"},
-                {"quantity": "1 noisette de beurre", "name": "Beurre"},
-                {"quantity": "2 verres de riz", "name": "Riz"},
-                {"quantity": "2 cas de cannelle moulue", "name": "Cannelle"},
-                {"quantity": "1 cas de cumin moulu", "name": "Cumin"},
-                {"quantity": "1/2 cas de poivre parfumé", "name": "Poivre"},
-                {"quantity": "1 tasse d’huile d’olive", "name": "Huile d'olive"},
-                {"quantity": "100g de noix de Cajou", "name": "Noix de Cajou"},
-                {"quantity": "100g d’amandes émondées", "name": "Amandes"},
-                {"quantity": "100g de pignons de pin", "name": "Pignons de pin"},
-                {"quantity": "1 grand pot de yaourt à la grecque", "name": "Yaourt"}
-            ],
-            "instructions": [
-                "Mettez le poulet entier, le baton de cannelle, l’oignon coupé en quatre et les feuilles de laurier dans une grande casserole et couvrez d’eau. Faites bouillir pendant une 30 minutes puis réservez le bouillon",
-                "Couper les aubergines et les patates en rondelles d’environ 1cm d’épaisseur, puis mélangez-les avec 1/3 des épices et de l’huile d’olive. Faites les griller au four à 180° pendant 20 minutes de chaque côté.",
-                "Désossez et effilochez le poulet et mélangez le au reste des épices.",
-                "Dans une casserole, étalez le beurre sur le fond et les côtés. Faites une couche de poulet en l’écrasant légèrement, une couche de patates, une couche d’aubergines et une couche de riz puis répétez l’opération une deuxième fois. Recouvrez avec du bouillon, couvrez et portez à légère ébullition jusqu’à absorption totale de l’eau.",
-                "Dans une poêle avec un peu de beurre, faites griller les noix de Cajou,  les amandes et les pignons.",
-                "Retournez le contenu de la casserole dans une grand assiette. Ajoutez les fruits secs grillés sur le dessus et servez avec le yaourt à la grecque sur le côté."
-            ]
-        },
-        {
-            "order": 2,
-            "category": "category1",
-            "name": "Maqlouba2",
-            "arabic_name": "مقلوبة",
-            "image_path": "/assets/maqlouba.jpg",
-            "description": "Maqlouba is a traditional Palestinian dish made of rice, vegetables, and meat. The dish is known for its unique presentation, where the pot is flipped upside down when served, hence the name maqlouba, which means upside down in Arabic.",
-            "servings": 6,
-            "ingredients": [
-                {"quantity": "1 poulet entier", "name": "Poulet"},
-                {"quantity": "1 baton de cannelle", "name": "Cannelle"},
-                {"quantity": "3 feuilles de Laurier", "name": "Laurier"},
-                {"quantity": "1 oignon", "name": "oignon"},
-                {"quantity": "2 aubergines", "name": "Aubergine"},
-                {"quantity": "4 grosses patates", "name": "Patate"},
-                {"quantity": "1 noisette de beurre", "name": "Beurre"},
-                {"quantity": "2 verres de riz", "name": "Riz"},
-                {"quantity": "2 cas de cannelle moulue", "name": "Cannelle"},
-                {"quantity": "1 cas de cumin moulu", "name": "Cumin"},
-                {"quantity": "1/2 cas de poivre parfumé", "name": "Poivre"},
-                {"quantity": "1 tasse d’huile d’olive", "name": "Huile d'olive"},
-                {"quantity": "100g de noix de Cajou", "name": "Noix de Cajou"},
-                {"quantity": "100g d’amandes émondées", "name": "Amandes"},
-                {"quantity": "100g de pignons de pin", "name": "Pignons de pin"},
-                {"quantity": "1 grand pot de yaourt à la grecque", "name": "Yaourt"}
-            ],
-            "instructions": [
-                "Mettez le poulet entier, le baton de cannelle, l’oignon coupé en quatre et les feuilles de laurier dans une grande casserole et couvrez d’eau. Faites bouillir pendant une 30 minutes puis réservez le bouillon",
-                "Couper les aubergines et les patates en rondelles d’environ 1cm d’épaisseur, puis mélangez-les avec 1/3 des épices et de l’huile d’olive. Faites les griller au four à 180° pendant 20 minutes de chaque côté.",
-                "Désossez et effilochez le poulet et mélangez le au reste des épices.",
-                "Dans une casserole, étalez le beurre sur le fond et les côtés. Faites une couche de poulet en l’écrasant légèrement, une couche de patates, une couche d’aubergines et une couche de riz puis répétez l’opération une deuxième fois. Recouvrez avec du bouillon, couvrez et portez à légère ébullition jusqu’à absorption totale de l’eau.",
-                "Dans une poêle avec un peu de beurre, faites griller les noix de Cajou,  les amandes et les pignons.",
-                "Retournez le contenu de la casserole dans une grand assiette. Ajoutez les fruits secs grillés sur le dessus et servez avec le yaourt à la grecque sur le côté."
-            ]
-        },
-        {
-            "order": 1,
-            "category": "category2",
-            "name": "Maqlouba3",
-            "arabic_name": "مقلوبة",
-            "image_path": "/assets/maqlouba.jpg",
+            "image_path": "assets/maqlouba.jpg",
             "description": "Maqlouba is a traditional Palestinian dish made of rice, vegetables, and meat. The dish is known for its unique presentation, where the pot is flipped upside down when served, hence the name maqlouba, which means upside down in Arabic.",
             "servings": 6,
             "ingredients": [

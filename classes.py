@@ -1,3 +1,6 @@
+import os
+import base64
+
 from dataclasses import dataclass
 from typing import Optional
 from jinja2 import Environment, FileSystemLoader
@@ -160,10 +163,14 @@ class Recipe(HasTemplate, HasID):
         return self.name
     
     def format_for_template(self) -> dict:
+        image_path = os.path.abspath(self.image_path)
+        with open(image_path, "rb") as file:
+            encoded_string = base64.b64encode(file.read()).decode("utf-8")
+        image_path = f"data:image/jpeg;base64,{encoded_string}"
         return {
             "name": self.name,
             "arabic_name": self.arabic_name,
-            "image_path": self.image_path,
+            "image_path": image_path,
             "description": self.description,
             "servings": self.servings,
             "ingredients": [i.quantity for i in self.ingredients],
